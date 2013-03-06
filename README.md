@@ -9,7 +9,9 @@ Python: [gevent-socket.io](https://github.com/abourget/gevent-socketio)
 
 ## How to run
 First, make sure you have `libevent` in your environment. If you are on mac, you can `brew` one.
+
 Second, run `pip install gevent-socketio` to get gevent-socket.io library. It is required to run this program.
+
 Finally, `cd` to this directory and type `python server.py` and open your browser with `localhost:8080/index.html`.
 
 ## How to play
