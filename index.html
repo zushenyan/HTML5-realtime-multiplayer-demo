@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Realtime Multiplayer Demo</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="lib/jquery-1.6.1.min.js"></script>
+	<script src="lib/socket.io.js"></script>
+	<script src="js/MediaResource.js"></script>
+	<script src="js/Rectangle.js"></script>
+	<script src="js/Event.js"></script>
+	<script src="js/LazyDisplay.js"></script>
+	
+	<script src="js/Player.js"></script>
+	<script src="js/Map.js"></script>
+	<script src="js/Model.js"></script>
+	<script src="js/Controller.js"></script>
+	<script src="js/View.js"></script>
+	<script>
+		(function(){
+			function init(){
+				var elements = {
+					nameField : document.getElementById("nameField"),
+					sendButton : document.getElementById("sendButton")
+				};
+
+				var canvas = document.getElementById("canvas");
+				var m = new Model();
+				var v = new View(m, canvas, elements);
+				var c = new Controller(m, v);
+				v.start();
+			}
+
+			window.onload = init;
+		})();
+	</script>
+</head>
+<body>
+	<div class="main">
+		<div>
+			<canvas width="640" height="640" id="canvas"></canvas>
+		</div>
+		<div>
+			<input type="text" placeholder="your name" id="nameField">
+			<input type="button" value="join" id="sendButton">
+		</div>
+	</div>
+</body>
+</html>
