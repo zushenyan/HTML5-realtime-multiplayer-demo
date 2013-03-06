@@ -15,7 +15,7 @@ The game is written in Javascript on client and Python on server.
 
 
 ## How to play
-For now, you can only walk around the map with arrow keys. Maybe I will add more feature in the future.
+For now, you can only walk around on the map with arrow keys. Maybe I will add more feature in the future.
 
 ## Changelog
 * ver 1.0 (2013/3/6):
