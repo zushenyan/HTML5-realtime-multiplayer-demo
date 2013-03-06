@@ -1,4 +1,4 @@
-# Realtime Multiplayer Demo
+# HTML5 Realtime Multiplayer Demo
 
 A HTML5 realtime multiplayer demonstration.
 The game is written in Javascript on client and Python on server.
