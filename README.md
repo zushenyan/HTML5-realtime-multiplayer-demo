@@ -13,6 +13,7 @@ The game is written in Javascript on client and Python on server.
 2. Run `pip install gevent-socketio` to get gevent-socket.io library. It is required to run this program.
 3. `cd` to this directory and type `python server.py` and open your browser with `http://localhost:8080/index.html`.
 
+note: run the server.py with Python 2.7.3, or system will dump a lot of errors.
 
 ## How to play
 For now, you can only walk around on the map with arrow keys. Maybe I will add more feature in the future.
