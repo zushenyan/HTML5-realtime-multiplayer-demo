@@ -12,7 +12,7 @@ First, make sure you have `libevent` in your environment. If you are on mac, you
 
 Second, run `pip install gevent-socketio` to get gevent-socket.io library. It is required to run this program.
 
-Finally, `cd` to this directory and type `python server.py` and open your browser with `localhost:8080/index.html`.
+Finally, `cd` to this directory and type `python server.py` and open your browser with `http://localhost:8080/index.html`.
 
 ## How to play
 For now, you can only walk around the map with arrow keys. Maybe I will add more feature in the future.
