@@ -25,22 +25,22 @@ Controller.prototype.allowKeyboardAccess = function(){
 		switch(e.keyCode){
 			//left
 			case 37 :
-				_this._model.movePlayer(Player.MOVE_LEFT);
+				_this._model.movePlayer(Character.MOVE_LEFT);
 				break;
 
 			//up
 			case 38 :
-				_this._model.movePlayer(Player.MOVE_UP);
+				_this._model.movePlayer(Character.MOVE_UP);
 				break;
 
 			//right
 			case 39 :
-				_this._model.movePlayer(Player.MOVE_RIGHT);
+				_this._model.movePlayer(Character.MOVE_RIGHT);
 				break;
 
 			//down
 			case 40 :
-				_this._model.movePlayer(Player.MOVE_DOWN);
+				_this._model.movePlayer(Character.MOVE_DOWN);
 				break;
 
 			default:

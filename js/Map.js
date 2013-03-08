@@ -1,21 +1,5 @@
-function Map(){
-	this._map = [
-		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-		[1,2,2,2,2,2,2,1,1,1,1,1,1,1,1],
-		[1,2,2,2,1,1,1,1,1,1,2,2,2,1,1],
-		[1,1,1,1,1,1,1,1,1,1,2,1,2,1,1],
-		[1,1,1,2,2,2,2,2,1,1,1,1,1,1,1],
-		[1,1,1,1,1,1,1,2,2,1,1,1,1,1,1],
-		[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-		[2,1,1,1,1,1,2,2,2,1,1,1,1,1,1],
-		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-		[1,1,1,2,1,1,1,2,1,1,1,1,1,1,1],
-		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-		[1,1,1,1,1,2,1,1,1,1,1,1,1,1,1],
-		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-	];
+function Map(map){
+	this._map = map || null;
 }
 
 Map.prototype.constructor = Map;
@@ -28,17 +12,12 @@ Map.prototype.getTile = function(x, y){
 	return this._map[y][x];
 };
 
-Map.prototype.isObstacle = function(x, y){
-	return this.isTileObstacle(this.getTile(x, y));
+Map.prototype.setMap = function(map){
+	this._map = map;
 };
 
-Map.prototype.isTileObstacle = function(tile){
-	switch(tile){
-		case Map.TILE_WATER:
-			return true;
-		default:
-			return false;
-	}
+Map.prototype.getMap = function(map){
+	return this._map;
 };
 
 Map.prototype.getSize = function(){
@@ -46,14 +25,4 @@ Map.prototype.getSize = function(){
 		width : this._map[0].length,
 		height : this._map.length
 	};
-};
-
-Map.prototype.inBoundary = function(x, y){
-	if(
-		((x < this._map[0].length) && (x >= 0)) &&
-		((y < this._map.length) && (y >= 0))
-		){
-		return true;
-	}
-	return false;
 };

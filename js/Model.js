@@ -1,6 +1,7 @@
 function Model(){
-	this._player = new Player("");
+	this._player = new Character("", 10);
 	this._playerList = null;
+	this._monsterList = null;
 	this._map = new Map();
 	this._socket = io.connect();
 
@@ -9,30 +10,29 @@ function Model(){
 		var jpl = JSON.parse(pl);
 		_this._playerList = jpl;
 	});
+
+	this._socket.on("recv_playerSelf", function(p){
+		var jp = JSON.parse(p);
+		_this._player.setXY(jp.x, jp.y);
+	});	
+
+	this._socket.on("recv_monsters", function(ml){
+		var jml = JSON.parse(ml);
+		_this._monsterList = jml;
+	});
+
+	this._socket.emit("requireMap");
+	this._socket.on("recv_map", function(map){
+		map = JSON.parse(map);
+		_this._map.setMap(map.map);
+	});
 }
 
 Model.prototype.constructor = Model;
 
 Model.prototype.movePlayer = function(direction){
-	var position = this._player.dryMove(direction);
-
-	if(this._map.inBoundary(position["x"], position["y"])){
-		if(!this._map.isObstacle(position["x"], position["y"])){
-			this._player.move(direction);
-			this.emitPLayerMove();
-		}
-		else{
-			console.log("is obstacle");
-		}
-	}
-	else{
-		console.log("out of bounds");
-	}
+	this._socket.emit("playerMove", direction);
 };
-
-Model.prototype.emitPLayerMove = function(){
-	this._socket.emit("playerMove", this._player.toJSON());
-}
 
 Model.prototype.getSocket = function(){
 	return this._socket;
@@ -47,16 +47,19 @@ Model.prototype.getPlayerPosition = function(){
 };
 
 Model.prototype.getMap = function(){
-	return this._map._map;
+	return this._map.getMap();
 };
 
 Model.prototype.getPlayerList = function(){
 	return this._playerList;
 };
 
+Model.prototype.getMonsterList = function(){
+	return this._monsterList;
+};
+
 Model.prototype.joinGame = function(name){
-	this._player.setName(name);
-	this._socket.emit("joinGame", this._player.toJSON());
+	this._socket.emit("joinGame", name);
 };
 
 Model.prototype.leaveGame = function(){
