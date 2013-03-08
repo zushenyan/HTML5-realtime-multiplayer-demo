@@ -24,7 +24,7 @@ For now, you can only walk around on the map with arrow keys. Maybe I will add m
 
 ## Changelog
 * ver 1.2 (2013/3/8):
- * you can finally connect to the server via internet. (sorry for my dumbness =_=)
+ * you can finally connect to the server from other computers. (sorry for my dumbness =_=)
  * client remains pure client, which means you can't modify Javascript to make the whole game as you like.
  * some change of program structure.
  * whoa! slimes everywhere!
