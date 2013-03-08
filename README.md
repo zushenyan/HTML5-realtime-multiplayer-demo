@@ -19,6 +19,12 @@ note: run the server.py with Python 2.7.3. Don't use python 2.7.3 above, or syst
 For now, you can only walk around on the map with arrow keys. Maybe I will add more feature in the future.
 
 ## Changelog
+* ver 1.2 (2013/3/8):
+ * you can finally connect to the server via internet. (sorry for my dumbness =_=)
+ * client remains pure client, which means you can't modify Javascript to make the whole game as you like.
+ * some change of program structure.
+ * now the server spawns monsters.
+ * everybody has health bar now.
 * ver 1.0 (2013/3/6):
  * initial commit.
 
