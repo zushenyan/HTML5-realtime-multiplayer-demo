@@ -1,7 +1,7 @@
 # HTML5 Realtime Multiplayer Demo
 
 A HTML5 realtime multiplayer demonstration.
-The game is written in Javascript on client and Python on server.
+The game is written in Javascript for client and Python for server.
 
 ## Library in use
 * Javascript: [socket.io](https://github.com/learnboost/socket.io)
