@@ -9,7 +9,7 @@ The game is written in Javascript for client and Python for server.
 
 
 ## How to run
-1. Make sure you have `libevent` in your environment. If you are on mac, you can `brew` one.
+1. Make sure you have [libevent](http://libevent.org/) in your environment. If you are on mac, you can `brew` one.
 2. Run `pip install gevent-socketio` to get gevent-socket.io library. It is required to run this program.
 3. `cd` to this directory and type `python server.py` and open your browser with `http://localhost:8080/index.html`.
 
