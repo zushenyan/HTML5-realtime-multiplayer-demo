@@ -160,7 +160,6 @@ class MultiPlayerNamespace(BaseNamespace):
 
 	def on_playerMove(self, direction):
 		movePlayer(self.player, direction);
-		self.emit("recv_playerSelf", json.dumps(self.player.toDict()));
 
 	def recv_disconnect(self):
 		try:

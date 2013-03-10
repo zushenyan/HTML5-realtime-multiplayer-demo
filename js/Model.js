@@ -18,11 +18,6 @@ function Model(){
 		}
 	});
 
-	this._socket.on("recv_playerSelf", function(p){
-		// var jp = JSON.parse(p);
-		// _this._player.setXY(jp.x, jp.y);
-	});	
-
 	this._socket.on("recv_monsters", function(ml){
 		var jml = JSON.parse(ml);
 		_this._monsterList = jml;
