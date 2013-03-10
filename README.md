@@ -16,7 +16,7 @@ The game is written in Javascript for client and Python for server.
 note: run the server.py with Python 2.7.3. Don't use python 2.7.3 above, or system will dump errors. :/
 
 ## How to play
-For now, you can only walk around on the map with arrow keys. Maybe I will add more feature in the future.
+Use arrow keys to move. Run into slimes with arrow keys to attack. Dont't worry if you are dead, you will be sent back to player spawn point.
 
 ## To do
 * program's structure still needs more reconstruct
