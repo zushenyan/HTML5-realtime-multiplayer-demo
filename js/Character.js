@@ -67,13 +67,3 @@ Character.prototype.setMaxHP = function(hp){
 Character.prototype.getMaxHP = function(){
 	return this._maxHP;
 };
-
-// Character.prototype.toJSON = function(){
-// 	var p = {};
-// 	p.name = this.getName();
-// 	p.x = this.getX();
-// 	p.y = this.getY();
-// 	p.currentHP = this.getCurrentHP();
-// 	p.maxHP = this.getMaxHP();
-// 	return JSON.stringify(p);
-// };

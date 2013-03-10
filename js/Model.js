@@ -9,11 +9,18 @@ function Model(){
 	this._socket.on("recv_players", function(pl){
 		var jpl = JSON.parse(pl);
 		_this._playerList = jpl;
+
+		for(var i in jpl){
+			if(jpl[i].name == _this._player.getName()){
+				_this._player.setXY(jpl[i].x, jpl[i].y);
+				break;
+			}
+		}
 	});
 
 	this._socket.on("recv_playerSelf", function(p){
-		var jp = JSON.parse(p);
-		_this._player.setXY(jp.x, jp.y);
+		// var jp = JSON.parse(p);
+		// _this._player.setXY(jp.x, jp.y);
 	});	
 
 	this._socket.on("recv_monsters", function(ml){
@@ -59,6 +66,7 @@ Model.prototype.getMonsterList = function(){
 };
 
 Model.prototype.joinGame = function(name){
+	this._player.setName(name);
 	this._socket.emit("joinGame", name);
 };
 

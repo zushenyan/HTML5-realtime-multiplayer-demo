@@ -8,6 +8,7 @@ from socketio.mixins import RoomsMixin, BroadcastMixin
 
 import json
 import random
+import time
 
 from server.Character import *
 
@@ -19,6 +20,41 @@ MAP_TILE_WATER = 2;
 # list
 playerList = [];
 monsterList = [];
+
+#time
+lastTime = time.time();
+
+#debug
+m_counter = 0;
+
+def update():
+	while True:
+		gevent.sleep(0.01);
+		global lastTime;
+		elapsedTime = time.time() - lastTime;
+
+		#update things
+		for i in playerList:
+			i.update(elapsedTime);
+		for i in monsterList:
+			i.update(elapsedTime);
+
+		#remove corpse:
+		clearCorpse();
+		lastTime = time.time();
+
+def clearCorpse():
+	for i in playerList:
+		if not i.isAlive:
+			i.setCurrentHP(10);
+			i.setAlive(True);
+			i.x = 0;
+			i.y = 0;
+
+	for i in monsterList:
+		if not i.isAlive:
+			monsterList.remove(i);
+			del i;
 
 def doSomethingPeriod():
 	while True:
@@ -34,12 +70,25 @@ def spawnMonster():
 
 			# check map first
 			m = map["map"];
-			if m[y][x] is not MAP_TILE_WATER:
-				# check player's position:
-				if playerList:
-					for i in playerList:
-						if (x is not i.x) and (y is not i.y):
-							monster = Character(name = "slime", hp = 5, cx = x, cy = y);
+			# don't spawn at player start point
+			if x != 0 and y != 0:
+				if m[y][x] != MAP_TILE_WATER:
+					# check player's position:
+					if playerList:
+						pcounter = 0;
+						mcounter = 0;
+						for i in playerList:
+							if (x == i.x) and (y == i.y):
+								pcounter += 1;
+
+						for i in monsterList:
+							if (x == i.x) and (y == i.y):
+								mcounter += 1;
+
+						if pcounter == 0 and mcounter == 0:
+							global m_counter;
+							m_counter += 1;
+							monster = Character(name = "slime" + str(m_counter), hp = 10, damage = 1, atkSpeed = 1, cx = x, cy = y);
 							monsterList.append(monster);
 							isSpawning = False;
 
@@ -47,8 +96,8 @@ def spawnMonster():
 def broadcastData(server, ns_name=""):
 	while True:
 		gevent.sleep(0.01);
-		jp = json.dumps([i.__dict__ for i in playerList]);
-		jm = json.dumps([i.__dict__ for i in monsterList]);
+		jp = json.dumps([i.toDict() for i in playerList]);
+		jm = json.dumps([i.toDict() for i in monsterList]);
 
 		packagePlayer = dict(
 			type = "event",
@@ -88,6 +137,8 @@ def movePlayer(player, direction):
 			for i in monsterList:
 				if i.isCollideWithMe(x, y):
 					count += 1;
+					player.attackWho(i);
+					i.attackWho(player);
 
 			if(count == 0):
 				player.x = x;
@@ -95,7 +146,7 @@ def movePlayer(player, direction):
 
 class MultiPlayerNamespace(BaseNamespace):
 	def initialize(self):
-		self.player = Character("", 10, 0, 0);
+		self.player = Character(name = "", hp = 10, damage = 1, atkSpeed = 0.5, cx = 0, cy = 0);
 
 	def on_requireMap(self):
 		self.emit("recv_map", json.dumps(map));
@@ -109,7 +160,7 @@ class MultiPlayerNamespace(BaseNamespace):
 
 	def on_playerMove(self, direction):
 		movePlayer(self.player, direction);
-		self.emit("recv_playerSelf", json.dumps(self.player.__dict__));
+		self.emit("recv_playerSelf", json.dumps(self.player.toDict()));
 
 	def recv_disconnect(self):
 		try:
@@ -162,6 +213,7 @@ if __name__ == "__main__":
 	port = 8080;
 	print("start listening on localhost:" + str(port) + "...");
 	server = SocketIOServer(("0.0.0.0", port), App(), policy_server=False);
+	gevent.spawn(update);
 	gevent.spawn(doSomethingPeriod);
 	gevent.spawn(broadcastData, server);
 	server.serve_forever();
