@@ -5,6 +5,8 @@ function Model(){
 	this._map = new Map();
 	this._socket = io.connect();
 
+	this.recvChatMsgEvent = new Event(this);
+
 	var _this = this;
 	this._socket.on("recv_players", function(pl){
 		var jpl = JSON.parse(pl);
@@ -27,6 +29,11 @@ function Model(){
 	this._socket.on("recv_map", function(map){
 		map = JSON.parse(map);
 		_this._map.setMap(map.map);
+	});
+
+	this._socket.on("recv_chatMsg", function(chat){
+		chat = JSON.parse(chat);
+		_this.recvChatMsgEvent.notify(chat);
 	});
 }
 
@@ -67,4 +74,11 @@ Model.prototype.joinGame = function(name){
 
 Model.prototype.leaveGame = function(){
 	this._socket.disconnect();
+};
+
+Model.prototype.sendMsg = function(msg){
+	var o = {};
+	o.name = this._player.getName();
+	o.msg = msg;
+	this._socket.emit("chatMsg", JSON.stringify(o));
 };

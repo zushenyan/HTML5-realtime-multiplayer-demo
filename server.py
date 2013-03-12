@@ -144,7 +144,7 @@ def movePlayer(player, direction):
 				player.x = x;
 				player.y = y;
 
-class MultiPlayerNamespace(BaseNamespace):
+class MultiPlayerNamespace(BaseNamespace, BroadcastMixin):
 	def initialize(self):
 		self.player = Character(name = "", hp = 10, damage = 1, atkSpeed = 0.5, cx = 0, cy = 0);
 
@@ -157,6 +157,9 @@ class MultiPlayerNamespace(BaseNamespace):
 
 		print(self.player.name + " has joined the room.");
 		print([i.name for i in playerList]);
+
+	def on_chatMsg(self, chat):
+		self.broadcast_event("recv_chatMsg", chat);
 
 	def on_playerMove(self, direction):
 		movePlayer(self.player, direction);

@@ -4,12 +4,32 @@ function Controller(model, view){
 
 	var _this = this;
 
-	this._view.sendButton.addEventListener("click", function(e){
-		_this._model.joinGame(_this._view.nameField.value);
+	this._view.joinButton.click(function(e){
+		_this._model.joinGame(_this._view.nameField.val());
 
-		_this._view.sendButton.style.display = "none";
-		_this._view.nameField.style.display = "none";
+		_this._view.joinButton.css("display", "none");
+		_this._view.nameField.css("display", "none");
+
+		_this._view.msgField.css("display", "inline-block");
+		_this._view.chatDisplay.css("display", "inline-block");
+
 		_this.allowKeyboardAccess();
+	});
+
+	this._view.msgField.keydown(function(e){
+		//on enter
+		if(e.keyCode == 13){
+			data = _this._view.msgField.val();
+			if(data != ""){
+				_this._model.sendMsg(data);
+			}
+		}	
+	});
+
+	this._model.recvChatMsgEvent.attach(function(sender, chat){
+		_this._view.chatDisplay.append("<p>" + chat.name + " : " + chat.msg + "</p>");
+		_this._view.msgField.val("");
+		_this._view.chatDisplay.slimScroll({ scrollBy: "999px"});
 	});
 
 	window.addEventListener("beforeunload", function(e){
@@ -25,23 +45,37 @@ Controller.prototype.allowKeyboardAccess = function(){
 		switch(e.keyCode){
 			//left
 			case 37 :
+				//prevent window scrolling event
+				e.preventDefault();
 				_this._model.movePlayer(Character.MOVE_LEFT);
 				break;
 
 			//up
 			case 38 :
+				e.preventDefault();
 				_this._model.movePlayer(Character.MOVE_UP);
 				break;
 
 			//right
 			case 39 :
+				e.preventDefault();
 				_this._model.movePlayer(Character.MOVE_RIGHT);
 				break;
 
 			//down
 			case 40 :
+				e.preventDefault();
 				_this._model.movePlayer(Character.MOVE_DOWN);
 				break;
+
+			case 13:
+				e.preventDefault();
+				if(!_this._view.msgField.is(":focus")){
+					_this._view.msgField.focus();
+				}
+				else{
+					_this._view.msgField.blur();
+				}
 
 			default:
 				break;

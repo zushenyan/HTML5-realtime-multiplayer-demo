@@ -7,7 +7,50 @@ function View(model, canvas, elements){
 	this._model = model;
 
 	this.nameField = elements.nameField;
-	this.sendButton = elements.sendButton;
+	this.joinButton = elements.joinButton;
+	this.msgField = elements.msgField;
+	this.chatDisplay = elements.chatDisplay;
+	this.chatBox = elements.chatBox;
+
+	//handling the eye candy for chat box
+	cb = this.chatBox;
+	mf = this.msgField;
+	cb.hover(function(){
+		cb.removeClass("chatBox_hide");
+		cb.addClass("chatBox_show");
+
+		mf.removeClass("chatMsgField_hide");
+		mf.addClass("chatMsgField_show");
+	}, function(){
+		var isFocused = mf.is(":focus");
+		if(!isFocused){
+			mf.removeClass("chatMsgField_show");
+			mf.addClass("chatMsgField_hide");
+
+			cb.removeClass("chatBox_show");
+			cb.addClass("chatBox_hide");
+		}
+	});
+
+	mf.focus(function(){
+		cb.removeClass("chatBox_hide");
+		cb.addClass("chatBox_show");
+
+		mf.removeClass("chatBoxField_hide");
+		mf.addClass("chatMsgField_show");
+	}).blur(function(){
+		mf.removeClass("chatMsgField_show");
+		mf.addClass("chatMsgField_hide");
+
+		cb.removeClass("chatBox_show");
+		cb.addClass("chatBox_hide");
+	});
+
+	//attach the mimic scrollbar to chat display
+	this.chatDisplay.slimScroll({
+		width: 300,
+		height: 150,
+	});
 }
 
 View.prototype = new LazyDisplay();

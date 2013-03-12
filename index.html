@@ -3,7 +3,9 @@
 <head>
 	<title>Realtime Multiplayer Demo</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="lib/jquery-1.6.1.min.js"></script>
+	<script src="lib/jquery-1.9.1.js"></script>
+	<script src="lib/jquery-ui-1.10.1.custom.min.js"></script>
+	<script src="lib/jquery.slimscroll.min.js"></script>
 	<script src="lib/socket.io.js"></script>
 	<script src="js/MediaResource.js"></script>
 	<script src="js/Event.js"></script>
@@ -18,8 +20,11 @@
 		(function(){
 			function init(){
 				var elements = {
-					nameField : document.getElementById("nameField"),
-					sendButton : document.getElementById("sendButton")
+					nameField : $("#nameField"),
+					joinButton : $("#joinButton"),
+					msgField : $("#msgField"),
+					chatDisplay : $("#chatDisplay"),
+					chatBox : $("#chatBox")
 				};
 
 				var canvas = document.getElementById("canvas");
@@ -34,13 +39,21 @@
 	</script>
 </head>
 <body>
-	<div class="main">
-		<div>
+	<div id="main">
+		<div id="gameContainer">
 			<canvas width="640" height="640" id="canvas"></canvas>
+			<div id="chatBox">
+				<div id="chatDisplayBox">
+					<div style="display: none" id="chatDisplay"></div>
+				</div>
+				<div id="chatInputBox">
+					<input style="display: none" type="text" placeholder="message" id="msgField">
+				</div>
+			</div>
 		</div>
 		<div>
 			<input type="text" placeholder="your name" id="nameField">
-			<input type="button" value="join" id="sendButton">
+			<input type="button" value="join" id="joinButton">
 		</div>
 	</div>
 </body>
