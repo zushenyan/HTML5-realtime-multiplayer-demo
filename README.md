@@ -4,9 +4,11 @@ A HTML5 realtime multiplayer demonstration.
 The game is written in Javascript for client and Python for server.
 
 ## Library in use
-* Javascript: [socket.io](https://github.com/learnboost/socket.io)
+* Javascript: 
+ * [socket.io](https://github.com/learnboost/socket.io)
+ * [jQuery](http://jquery.com/)
+ * [jQuery slimScroll](http://rocha.la/jQuery-slimScroll?page=1)
 * Python: [gevent-socket.io](https://github.com/abourget/gevent-socketio)
-
 
 ## How to run
 1. Make sure you have [libevent](http://libevent.org/) in your environment. If you are on mac, you can `brew` one.
@@ -20,9 +22,10 @@ Use arrow keys to move. Run into slimes with arrow keys to attack. Dont't worry 
 
 ## To do
 * program's structure still needs more reconstruct
-* add chat room.
 
 ## Changelog
+* ver 1.4 (2013/3/12):
+ * add chat room.
 * ver 1.3 (2013/3/10):
  * slimes will now spawn correctly at right position and quantity.
  * add fighting system. Move yourself toward slime will try to attack it. Move away to stop fighting.
