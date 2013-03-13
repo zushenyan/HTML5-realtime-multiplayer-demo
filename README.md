@@ -33,7 +33,7 @@ Use arrow keys to move. Run into slimes with arrow keys to attack. Dont't worry 
 * ver 1.3 (2013/3/10):
  * slimes will now spawn correctly at right position and quantity.
  * add fighting system. Move yourself toward slime will try to attack it. Move away to stop fighting.
- * when player is dead, will be move to player spawn point.
+ * when player is dead, will be moved to player spawn point.
 * ver 1.2 (2013/3/8):
  * you can finally connect to the server from other computers. (sorry for my dumbness =_=)
  * client remains pure client, which means you can't modify Javascript to make the whole game as you like.
