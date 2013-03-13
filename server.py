@@ -12,7 +12,7 @@ from server.Character import *
 from server.CharacterFactory import *
 from server.GameManager import *
 
-gm = GameManager();
+gm = GameManager("./server/map.json");
 gm.start();
 
 def broadcastData(server, ns_name=""):
@@ -79,7 +79,7 @@ class App(object):
 			start_response('200 OK', [('Content-Type', 'text/html')]);
 			return ["okokokok"];
 
-		if path.startswith("lib/") or path.startswith("images/") or path.startswith("js/") or path == "style.css" or path == "index.html":
+		if path.startswith("lib/") or path.startswith("images/") or path.startswith("client/") or path == "style.css" or path == "index.html":
 			try:
 				data = open(path).read();
 			except Exception:

@@ -5,8 +5,8 @@ from Map import *
 import time
 
 class GameManager(object):
-	def __init__(self):
-		self._map = Map("map.json", 3);
+	def __init__(self, mapFileName):
+		self._map = Map(mapFileName, 3);
 		self._lastTime = time.time();
 
 	def start(self):
