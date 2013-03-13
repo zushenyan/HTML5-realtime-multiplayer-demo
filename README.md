@@ -29,7 +29,7 @@ Use arrow keys to move. Run into slimes with arrow keys to attack. Dont't worry 
  * add a simple enter nickname screen.
  * chat window will now show at correctly position at start.
 * ver 1.4 (2013/3/12):
- * add chat room.
+ * add chat window.
 * ver 1.3 (2013/3/10):
  * slimes will now spawn correctly at right position and quantity.
  * add fighting system. Move yourself toward slime will try to attack it. Move away to stop fighting.
