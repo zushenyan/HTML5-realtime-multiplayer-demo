@@ -24,7 +24,9 @@
 					joinButton : $("#joinButton"),
 					msgField : $("#msgField"),
 					chatDisplay : $("#chatDisplay"),
-					chatBox : $("#chatBox")
+					chatBox : $("#chatBox"),
+					gameContainer : $("#gameContainer"),
+					nicknameBox : $("#nicknameBox")
 				};
 
 				var canvas = document.getElementById("canvas");
@@ -40,20 +42,22 @@
 </head>
 <body>
 	<div id="main">
-		<div id="gameContainer">
-			<canvas width="640" height="640" id="canvas"></canvas>
-			<div id="chatBox">
-				<div id="chatDisplayBox">
-					<div style="display: none" id="chatDisplay"></div>
-				</div>
-				<div id="chatInputBox">
-					<input style="display: none" type="text" placeholder="message" id="msgField">
-				</div>
+		<div id="nicknameBox">
+			<div>
+				<input type="text" placeholder="enter an nickname" id="nameField">
+				<input type="button" value="join" id="joinButton">
 			</div>
 		</div>
-		<div>
-			<input type="text" placeholder="your name" id="nameField">
-			<input type="button" value="join" id="joinButton">
+		<div id="gameContainer">
+			<canvas width="640" height="640" id="canvas"></canvas>
+			<div class="chatBox_hide" id="chatBox">
+				<div id="chatDisplayBox">
+					<div id="chatDisplay"></div>
+				</div>
+				<div id="chatInputBox">
+					<input class="chatMsgField_hide" type="text" placeholder="press enter to chat" id="msgField">
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

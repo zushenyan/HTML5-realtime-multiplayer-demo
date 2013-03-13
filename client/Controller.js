@@ -7,11 +7,8 @@ function Controller(model, view){
 	this._view.joinButton.click(function(e){
 		_this._model.joinGame(_this._view.nameField.val());
 
-		_this._view.joinButton.css("display", "none");
-		_this._view.nameField.css("display", "none");
-
-		_this._view.msgField.css("display", "inline-block");
-		_this._view.chatDisplay.css("display", "inline-block");
+		_this._view.nicknameBox.css("display", "none");		
+		_this._view.gameContainer.css("display", "block");
 
 		_this.allowKeyboardAccess();
 	});
@@ -68,6 +65,7 @@ Controller.prototype.allowKeyboardAccess = function(){
 				_this._model.movePlayer(Character.MOVE_DOWN);
 				break;
 
+			//enter key
 			case 13:
 				e.preventDefault();
 				if(!_this._view.msgField.is(":focus")){

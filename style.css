@@ -18,6 +18,19 @@
 	font-family: Helvetica;
 }
 
+#nicknameBox {
+	border: solid 1px;
+
+	position: relative;
+	width: 640px;
+	height: 640px;
+	margin: 0 auto;
+}
+
+#nicknameBox input{
+	margin-top: 300px;
+}
+
 #gameContainer {
 	position: relative;
 	width: 640px;

@@ -11,6 +11,11 @@ function View(model, canvas, elements){
 	this.msgField = elements.msgField;
 	this.chatDisplay = elements.chatDisplay;
 	this.chatBox = elements.chatBox;
+	this.nicknameBox = elements.nicknameBox;
+	this.gameContainer = elements.gameContainer;
+
+	//hide main screen
+	this.gameContainer.css("display", "none");
 
 	//handling the eye candy for chat box
 	cb = this.chatBox;
