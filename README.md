@@ -21,9 +21,13 @@ note: run the server.py with Python 2.7.3. Don't use python 2.7.3 above, or syst
 Use arrow keys to move. Run into slimes with arrow keys to attack. Dont't worry if you are dead, you will be sent back to player spawn point.
 
 ## To do
-* program's structure still needs more reconstruct
+* norhing to do so far.
 
 ## Changelog
+* ver 1.5 (2013/3/13):
+ * make server side code structure more reasonable.
+ * add a simple enter nickname screen.
+ * chat window will now show at correctly position at start.
 * ver 1.4 (2013/3/12):
  * add chat room.
 * ver 1.3 (2013/3/10):
