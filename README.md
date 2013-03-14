@@ -7,7 +7,7 @@ The game is written in Javascript for client and Python for server.
   <img src="http://farm9.staticflickr.com/8108/8556002245_dd486532a7_b.jpg" alt="mmo"/>
 </div>
 
-demo video click [here](http://www.youtube.com/watch?v=vRHEdagTP1s&feature=youtu.be)
+demo video click [here](http://www.youtube.com/watch?v=vRHEdagTP1s&feature=youtu.be).
 
 # About platforms
 works on the latest version of Chrome, Firefox, Safari, Opera and IE 10+.
