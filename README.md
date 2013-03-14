@@ -3,6 +3,10 @@
 A HTML5 realtime multiplayer demonstration.
 The game is written in Javascript for client and Python for server.
 
+<div align="center">
+  <img src="http://farm9.staticflickr.com/8108/8556002245_dd486532a7_b.jpg" alt="mmo"/>
+</div>
+
 ## Library in use
 * Javascript: 
  * [socket.io](https://github.com/learnboost/socket.io)
