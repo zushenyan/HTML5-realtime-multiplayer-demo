@@ -7,6 +7,9 @@ The game is written in Javascript for client and Python for server.
   <img src="http://farm9.staticflickr.com/8108/8556002245_dd486532a7_b.jpg" alt="mmo"/>
 </div>
 
+# About platforms
+works on the latest version of Chrome, Firefox, Safari, Opera and IE 10+.
+
 ## Library in use
 * Javascript: 
  * [socket.io](https://github.com/learnboost/socket.io)
