@@ -30,7 +30,7 @@ note: run the server.py with Python 2.7.3. Don't use python 2.7.3 above, or syst
 Use arrow keys to move. Run into slimes with arrow keys to attack. Dont't worry if you are dead, you will be sent back to player spawn point.
 
 ## To do
-* norhing to do so far.
+* nothing to do so far.
 
 ## Changelog
 * ver 1.5 (2013/3/13):
