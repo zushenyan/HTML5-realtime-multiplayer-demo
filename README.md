@@ -21,11 +21,16 @@ works on the latest version of Chrome, Firefox, Safari, Opera and IE 10+.
 
 ## Why gevent
 Back in 2013, I happened to read [this article](http://blog.ez2learn.com/2010/07/17/talk-about-coroutine-and-gevent/)(chinese) on the internet. It indicates there are 5 server architectures:
-* Blocking Single Process - Only one process. Subsequent requests can't not be processed until current one is done.
-* Blocking Multi Process - Open up a new process/thread to handle things whenever a new request comes in. Have context-switch overhead.
-* Blocking Multi Process/Thread - Benefit the good part of above method, but doesn't need to deal with context-switch. However, new problems like dead lock, race condition pop up.
-* Non-blocking Event Driven - You only do things in a one-threaded, single loop. With this one, you don't have to fight problems like dead lock, race condition and so on. But, still, nothing goes perfect. You now have to remember program's state here and there. Program becomes complex now.
-* Coroutine - So, is there any method that doesn't suffer from blocking, issues that multi-threading have, and doesn't even make our program hard to maintain? Oh, sure! Coroutine comes to rescue! (Or at least this post thought so.)
+* Blocking Single Process
+  * Only one process. Subsequent requests can't not be processed until current one is done.
+* Blocking Multi Process 
+  * Open up a new process/thread to handle things whenever a new request comes in. Have context-switch overhead.
+* Blocking Multi Process/Thread 
+  * Benefit the good part of above method, but doesn't need to deal with context-switch. However, new problems like dead lock, race condition pop up.
+* Non-blocking Event Driven 
+  * You only do things in a one-threaded, single loop. With this one, you don't have to fight problems like dead lock, race condition and so on. But, still, nothing goes perfect. You now have to remember program's state here and there. Program becomes complex now.
+* Coroutine 
+  * So, is there any method that doesn't suffer from blocking or issues that multi-threading have, and doesn't even make our program hard to maintain? Sure! Coroutine comes to rescue! (Or at least this post thought so.)
 
 I wondered how good it is. Without hesitation, I decided to give it a try.
 
